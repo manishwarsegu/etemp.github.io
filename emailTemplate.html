@@ -1,0 +1,600 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+
+    <!-- CSS Reset -->
+    <style type="text/css">
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Warning: It might remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            Margin: 0 auto !important;
+        }
+
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* What it does: A work-around for iOS meddling in triggered links. */
+        .mobile-link--footer a,
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: underline !important;
+        }
+    </style>
+
+    <!-- Progressive Enhancements -->
+    <style>
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+
+        .button-td:hover .button-a:hover {
+            background: #00B3F5 !important;
+            border-color: #00B3F5 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 480px) {
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid,
+            .fluid-centered {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+
+            /* And center justify these ones. */
+            .fluid-centered {
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+                float: none !important;
+            }
+
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            .img {
+                height: 170px;
+                width: 300px;
+            }
+
+            #fit {
+                padding-top: 10px !important;
+            }
+
+            .si {
+                padding: 18px 18px !important;
+            }
+
+            .fs {
+                font-size: 14px !important;
+            }
+
+        }
+
+        @media screen and (min-width: 1440px) {
+            #heading {
+                font-size: 3vw !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body width="100%" bgcolor="#f3f3f3" style="Margin: 0;">
+    <center style="width: 100%; background: #f3f3f3;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div
+            style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--    
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 680px.
+            2. MSO tags for Desktop Windows Outlook enforce a 680px width.
+        -->
+        <div style="max-width: 680px; margin: auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table cellspacing="0" cellpadding="0" border="0" width="680" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Header : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">
+                <tr>
+                    <td style="padding: 20px 0; text-align: center">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/tie.png?alt=media&token=99161847-277e-40e7-9830-81c344c2f95d"
+                            width="50" height="50" alt="alt_text" border="0">
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Header : END -->
+
+            <!-- Email Body : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%"
+                style="max-width: 680px;">
+
+                <!-- BEGIN -->
+                <tr>
+                    <td style="padding-right: 18px; padding-left: 18px">
+                        <p id="heading"
+                            style="font-family: sans-serif; font-size: 4vw; font-weight: lighter; text-align: center; color: #2d2d2d; ">
+                            Across The Universe</p>
+                        <img class="img"
+                            src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/hills-min.jpg?alt=media&token=10f060ec-1ee2-4a13-87d7-df0c8a05efd0"
+                            width="300" height="380" alt="alt_text" border="0" align="center"
+                            style="width: 100%; max-width: 680px;">
+                    </td>
+                </tr>
+                <!-- END -->
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td class="fs" id="fit"
+                                    style="padding: 18px 18px 0px 18px; font-family: sans-serif; font-size: 16px; mso-height-rule: exactly; line-height: 20px; color: #2d2d2d;">
+                                    Words are flowing out, like endless rain into a paper cup. They slither while they
+                                    pass, they slip away across the universe.
+                                    <br><br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                        <tr>
+                        <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%"
+                            style="max-width:680px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                    <tr>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block;  width:100%; min-width:200px; max-width:330px; vertical-align:top;"
+                                        class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="si" style="padding: 9px 25px 9px 9px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                                        style="font-size: 14px;text-align: left; padding-right: 20px;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/grass.jpg?alt=media&token=4d47e588-ba21-41f6-a6d5-1c074d39a63e"
+                                                                    width="300" alt=""
+                                                                    style="border: 0;width: 100%;max-width: 680px;"
+                                                                    class="center-on-narrow img">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fs"
+                                                                style="font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 24px; color: #2d2d2d; padding-top: 10px;">
+                                                                In Penny Lane there is a barber showing photographs
+                                                                <br>
+                                                                <p class="fs"
+                                                                    style="font-size: 16px; font-weight: normal; margin-top:6px; line-height: 20px;">
+                                                                    Of every head he's had the pleasure to know and all
+                                                                    the people that come and go stop and say hello.</p>
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block;  width:100%; min-width:200px; max-width:330px; vertical-align:top;"
+                                        class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="si" style="padding: 9px 9px 9px 25px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                                        style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/mountains.jpg?alt=media&token=8368fe45-7a6b-4b8f-b53a-476c68dc88a4"
+                                                                    width="300" alt=""
+                                                                    style="border: 0;width: 100%;max-width: 680px;"
+                                                                    class="center-on-narrow img">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fs"
+                                                                style="font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 24px; color: #2d2d2d; padding-top: 10px;">
+                                                                When I find myself in times of trouble
+                                                                <br>
+                                                                <p class="fs"
+                                                                    style="font-size: 16px; font-weight: normal; margin-top:6px; line-height: 20px;">
+                                                                    Mother Mary comes to me speaking words of wisdom,
+                                                                    let it be and in my hours of darkness...</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+
+                <!-- 3 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%"
+                        style="padding: 10px 0;">
+                        <!--[if mso]>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                        <tr>
+                        <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%"
+                            style="max-width:660px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0;">
+                                    <!--[if mso]>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                    <tr>
+                                    <td align="left" valign="top" width="220">
+                                    <![endif]-->
+                                    <div style="display:inline-block; max-width:33.33%; min-width:220px; vertical-align:top; width:100%;"
+                                        class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="si" style="padding: 9px 28px 9px 9px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                                        style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/astro.jpg?alt=media&token=fb3ca7f4-a4d7-4f8e-82d3-ddf3b9c6dd53"
+                                                                    width="200" height="120" alt=""
+                                                                    style="border: 0;width: 100%;max-width: 680px;"
+                                                                    class="center-on-narrow img">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fs"
+                                                                style="font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 24px; color: #2d2d2d; padding-top: 10px;">
+                                                                Help me if you can, I'm feeling down
+                                                                <br>
+                                                                <p class="fs"
+                                                                    style="font-size: 16px; font-weight: normal; margin-top:6px; line-height: 20px;">
+                                                                    And I do appreciate you being round help me get my
+                                                                    feet back on the ground won't you please, please
+                                                                    help me.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="220">
+                                    <![endif]-->
+                                    <div style="display:inline-block; max-width:33.33%; min-width:220px; vertical-align:top; width:100%;"
+                                        class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="si" style="padding: 9px 18px 9px 18px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                                        style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/tulips.jpg?alt=media&token=6ac077eb-2a90-4375-9b4d-e113994b7015"
+                                                                    width="200" height="120" alt=""
+                                                                    style="border: 0;width: 100%;max-width: 680px;"
+                                                                    class="center-on-narrow img">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fs"
+                                                                style="font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 24px; color: #2d2d2d; padding-top: 10px;">
+                                                                Living is easy with eyes closed
+                                                                <br>
+                                                                <p class="fs"
+                                                                    style="font-size: 16px; font-weight: normal; margin-top:6px; line-height: 20px;">
+                                                                    Misunderstanding all you see it's getting hard to be
+                                                                    someone but it all works out it doesn't matter much
+                                                                    to me.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="220">
+                                    <![endif]-->
+                                    <div style="display:inline-block; max-width:33.33%; min-width:220px; vertical-align:top; width:100%;"
+                                        class="stack-column">
+                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td class="si" style="padding: 9px 9px 9px 28px;">
+                                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                                        style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/river.jpg?alt=media&token=ae81b54e-2366-4ea4-bf24-358df7f5dde2"
+                                                                    width="200" height="120" alt=""
+                                                                    style="border: 0;width: 100%;max-width: 680px;"
+                                                                    class="center-on-narrow img">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fs"
+                                                                style="font-family: sans-serif; font-size: 18px; font-weight: bold; mso-height-rule: exactly; line-height: 24px; color: #2d2d2d; padding-top: 10px;">
+                                                                The English Army had just won the war
+                                                                <br>
+                                                                <p class="fs"
+                                                                    style="font-size: 16px; font-weight: normal; margin-top:6px; line-height: 20px;">
+                                                                    A crowd of people turned away but I just had to look
+                                                                    having read the book I'd love to turn you on.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+									</tr>
+									</table>
+									<![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- 3 Even Columns : END -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td>
+                        <table bgcolor="#ffffff" align="center" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td class="fs" id="fit"
+                                    style="padding: 50px 10px 20px 10px; font-family: sans-serif; text-align: center; font-size: 16px; mso-height-rule: exactly; line-height: 20px; color: #2d2d2d;">
+                                    All you need is love. Love. Love
+                                    <br><br>
+                                    <!-- Button : Begin -->
+                                    <table cellspacing="0" cellpadding="0" border="0" align="center"
+                                        style="margin: auto">
+                                        <tr>
+                                            <td style="border-radius: 5px; background: #009AE3; text-align: center;"
+                                                class="button-td">
+                                                <a href="http://www.google.com"
+                                                    style="background: #009AE3; border: 15px solid #009AE3; font-family: sans-serif; font-size: 16px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: normal;"
+                                                    class="button-a">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">Upgrade
+                                                        Today</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- Button : END -->
+                                    <p style="text-align: center; padding-top:5px;">&nbsp; Love is all you need. </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+            </table>
+
+
+
+
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">
+                <tr>
+                    <td
+                        style="padding: 0px 5px 10px 5px; width: 100%;font-size: 12px; font-family: sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;">
+                        <br>
+                        Company Inc,<span class="mobile-link--footer">3 Abbey Road, San Francisco CA 94102
+                        </span>
+                        <br>
+                        Don't like these emails?
+                        <unsubscribe style="color:#888888; text-decoration:underline; cursor: pointer;">Unsubscribe
+                        </unsubscribe>
+                        <br><br>
+                        Follow us for updates.
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Social Media Icons : BEGIN -->
+
+            <table align="center" border="0" cellpadding="0" cellspacing="0"
+                style="border-collapse: collapse; border-spacing: 0px; margin: 0 auto;">
+                <tbody>
+                    <tr style="border-collapse: collapse;">
+                        <!-- begin social icon 1 -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href="https://www.twitter.com"><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/twitter.png?alt=media&token=74a530d4-5fac-4493-93d9-91b92a76f10a"
+                                    style="margin: 0 auto; padding: 0 12px; height: 40px; width: 40px" /></a></td>
+                        <!-- end social icon 1 -->
+                        <!-- begin social icon 2 -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href="https://www.facebook.com"><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/facebook.png?alt=media&token=98f22563-16d3-4c9c-9e17-7554500ebfbc"
+                                    style="margin: 0 auto; padding: 0 12px; height: 40px; width: 40px" /></a></td>
+                        <!-- end social icon 2 -->
+                        <!-- begin social icon 3 -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href="https://www.pinterest.com"><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/pinterest-logo.png?alt=media&token=4cb6b7a4-4306-4694-ad4d-187279da243e"
+                                    style="margin: 0 auto; padding: 0 12px; height: 40px; width: 40px" /></a></td>
+                        <!-- end social icon 3 -->
+                        <!-- begin social icon 4 -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href="https://www.instagram.com"><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/instagram.png?alt=media&token=d743b43e-8090-4ad8-ba47-9127a922c229"
+                                    style="margin: 0 auto; padding: 0 12px; height: 40px; width: 40px" /></a></td>
+                        <!-- end social icon 4 -->
+                        <!-- begin social icon 5 -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href="https://www.linkedin.com"><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/linkedin.png?alt=media&token=a12df302-c875-4383-869e-10bee5217b92"
+                                    style="margin: 0 auto; padding: 0 12px; height: 40px; width: 40px" /></a></td>
+                        <!-- end social icon 5 -->
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Social Media Icons : END -->
+
+            <br>
+            <!-- Store Badges - BEGIN -->
+
+            <p
+                style="font-size: 12px; font-family: sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; margin-bottom: 0px; color: #888888;">
+                Get the app today</p>
+            <table align="center" border="0" cellpadding="0" cellspacing="0"
+                style="border-collapse: collapse; border-spacing: 0px; margin: 0 auto;">
+                <tbody>
+                    <tr style="border-collapse: collapse;">
+                        <!-- App Store Icon : BEGIN -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href=""><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/APP_STORE.svg?alt=media&token=5676aa6c-d36c-4d8e-9ac6-1b754aa3a283"
+                                    style="margin: 0 auto;"/></a></td>
+                        <!-- App Store Icon : END -->
+                        <!-- Play Store Icon : START -->
+                        <td align="center"
+                            style="-moz-hyphens: auto; border-collapse: collapse !important; hyphens: auto; margin: 0; padding-bottom: 10px; word-wrap: break-word;">
+                            <a href=""><img
+                                    src="https://firebasestorage.googleapis.com/v0/b/images-a58ca.appspot.com/o/google-play-badge.png?alt=media&token=2a55b09f-0f0f-4272-83bc-aeda4dec674f"
+                                    style="margin: 0 auto; width: 150px; height: 58px;"/></a></td>
+                        <!-- Play Store Icon : END -->
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Store Badges - END -->
+
+            <!-- Email Footer : END -->
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </center>
+</body>
+
+</html>
